@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} | SignIn | {% endblock %}
+
+{% block content %}
+<div class="container pt-5">
+	<div class="row justify-content-center">
+		<div class="col-9">
+			<div class="card shadow shadow-md border rounded rounded-4 py-3">
+				<div class="row">
+					<div class="col col-12 ">
+						<a class="mx-4 fs-5" href="/" style="color: black;"><i class="fa-solid fa-house"></i></a>
+					</div>
+				</div>
+				<div class="card-body text-center">
+					<span class="text-center">
+						<p class="card-title display-5 px-3 pb-3 text-decoration-underline ">SignIn Form</p>
+
+					</span>
+					<form action="{% url 'signin.html' %}" method="POST" enctype="application/x-www-form-urlencoded" class="p-2 mb-3">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-md-12">
+								<!-- Email input -->
+								<div class="form-outline mb-4">
+									<input type="text" id="username" name="username" class="form-control" placeholder="User Name"  required>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<!-- Password input -->
+								<div class="form-outline mb-4">
+									<input type="password" id="pwd" name="pwd" class="form-control" placeholder="Password"  required>
+								</div>
+							</div>
+							<div class="col-md-6 d-grid gap-2 mx-auto mb-3">
+								<!-- Submit button -->
+								<input type="submit" class="btn btn-primary btn-block mb-2" value="SignIn">
+								<a href="#!" class="text-muted"><em>Forgot password <span class="fw-bold text-danger">???</span></em></a>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<!-- Register buttons -->
+									<p class="text-muted"><em>Not a member <a href="{% url 'signup.html' %}">SignUp</a> now <span class="fw-bold text-danger">!!!</span></em></p>
+								</div>
+							</div>
+							
+						</div>
+
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% if bug == 'no' %}
+<script>
+	alert('Loggen In Successfully');
+	window.location = ("{% url 'home' %}")
+</script>
+{% endif %}
+
+{% if bug == 'yes' %}
+<script>
+	alert("Invalid Login credentials...Try again !!!");
+</script>
+{% endif %}
+
+
+
+{% endblock %}

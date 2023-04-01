@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- head tag -->
+        {% include 'header.html' %}
+
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body class="data-bs-dark">
+
+        <!-- NavBar -->
+
+        {% include 'nav.html' %}
+        <!-- Main body -->
+        {% block content%}{% endblock %}
+
+        <!-- js links -->
+        {% include 'footer.html' %}
+
+    </body>
+
+</html>

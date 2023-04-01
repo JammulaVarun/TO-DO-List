@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} -| Edit |- {% endblock %}
+
+{% block content %}
+
+
+<div class="container pt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card shadow shadow-md border rounded rounded-4 m-3 p-3">
+				<div class="row">
+					<div class="col">
+						<a class="mx-4 fs-4" href="/" style="color: black;">
+							<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+				<div class="card-body">
+					<form action="{% url 'list_update' etdi.id %}" method="post" enctype="application/x-www-form-urlencoded">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-md-12 mb-3">
+								<span class="input-group">
+									<span class="input-group-text fw-semibold px-3">Title </span>
+									<input type="text" name="title" id="title" class="form-control" value="{{etdi.title}}" >
+								</span>
+							</div>
+							<div class="col-md-12 mb-3">
+								<span class="input-group">
+									<span class="input-group-text fw-semibold px-3">Description </span>
+									<textarea type="text" name="desc" id="desc" class="form-control" rows="5" >{{etdi.desc}}</textarea>
+									
+								</span>
+							</div>
+							<div class="col-md-12 mb-3">
+								<input type="submit" class="btn btn-primary py-2 px-5" value="Update">
+							</div>
+						</div>		
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% if bug == 'updated' %}
+<script>
+	alert('Updated successfully');
+</script>
+{% endif %}
+
+{% if bug == 'not_updated' %}
+<script>
+	alert('Something went wrong !');
+</script>
+{% endif %}
+
+{% endblock %}

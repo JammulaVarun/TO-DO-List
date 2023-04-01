@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-danger">
+    <div class="container">
+        <a class="navbar-brand" href="/" data-bs-toggle="tooltip" title="Home"><span class="display-6 text-light"> ToDo - List </span></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_list_content"
+            aria-controls="navbar_list_content" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar_list_content">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                <h4 class="mx-4">Hello {{request.user}} ! </h4>
+                <a href="{% url 'Logout' %}" class="btn text-light btn-outline-dark">Logout</a>
+                {% else %}
+                <span class="btn btn-group border border-0">
+                    <a href="{% url 'signin.html' %}" type="button"
+                        class="btn btn-dark border border-2 border-light">SignIn</a>
+                    <a href="{% url 'signup.html' %}" type="button"
+                        class="btn btn-dark border border-2 border-light">SignUp for free</a>
+                </span>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
